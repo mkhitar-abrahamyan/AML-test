@@ -16,11 +16,9 @@ git clone https://github.com/mkhitar-abrahamyan/AML-test
 ```
 
 ```bash
-git clone https://github.com/mkhitar-abrahamyan/AML-test
 cd AML-test
 ```
 ```bash
-git clone https://github.com/mkhitar-abrahamyan/AML-test
 ./setup.sh
 ```
 
