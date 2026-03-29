@@ -13,7 +13,14 @@ Full-stack expense tracking application with NestJS backend and Next.js frontend
 
 ```bash
 git clone https://github.com/mkhitar-abrahamyan/AML-test
-cd AML
+```
+
+```bash
+git clone https://github.com/mkhitar-abrahamyan/AML-test
+cd AML-test
+```
+```bash
+git clone https://github.com/mkhitar-abrahamyan/AML-test
 ./setup.sh
 ```
 

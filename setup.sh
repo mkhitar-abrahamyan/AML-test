@@ -1,22 +1,24 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "--- Creating env files from examples (if absent) ---"
-[ -f expense-tracker-backend/.env ] || cp expense-tracker-backend/.env.example expense-tracker-backend/.env
-[ -f expense-tracker-frontend/.env ] || cp expense-tracker-frontend/.env.example expense-tracker-frontend/.env
-
 echo "--- Installing dependencies (backend and frontend) ---"
+echo "--- Creating env files from examples (if absent) ---"
 cd expense-tracker-backend
+cp .env.example .env
 npm ci
 cd ../expense-tracker-frontend
+cp .env.example .env
 npm ci
 cd ..
 
 echo "--- Starting Docker services ---"
 docker compose up -d --build
 
-echo "--- Running Prisma migrations on backend ---"
-docker compose exec backend npx prisma migrate deploy --preview-feature || true
+echo "--- Waiting for database to be ready ---"
+sleep 5
+
+echo "--- Pushing Prisma schema to database ---"
+docker compose exec backend npx prisma db push || true
 
 cat <<'EOF'
 Done.
